@@ -43,6 +43,7 @@ int32_t i2c_init(i2c_port_t port) {
     conf.mode = I2C_MODE_MASTER;
     conf.sda_pullup_en = GPIO_PULLUP_DISABLE;
     conf.scl_pullup_en = GPIO_PULLUP_DISABLE;
+    conf.clk_flags = 0;
 
     if (I2C_NUM_0 == port) {
         conf.sda_io_num = I2C_HELPER_MASTER_0_SDA;
