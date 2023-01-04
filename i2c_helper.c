@@ -39,11 +39,13 @@ static const uint8_t ACK_CHECK_EN = 1;
 int32_t i2c_init(i2c_port_t port) {
     ESP_LOGI(TAG, "Starting I2C master at port %d.", port);
 
-    i2c_config_t conf;
-    conf.mode = I2C_MODE_MASTER;
-    conf.sda_pullup_en = GPIO_PULLUP_DISABLE;
-    conf.scl_pullup_en = GPIO_PULLUP_DISABLE;
-    conf.clk_flags = 0;
+    i2c_config_t conf = {
+        .mode = I2C_MODE_MASTER,
+        .sda_pullup_en = GPIO_PULLUP_DISABLE,
+        .scl_pullup_en = GPIO_PULLUP_DISABLE,
+        .clk_flags = 0,        
+    };
+
 
     if (I2C_NUM_0 == port) {
         conf.sda_io_num = I2C_HELPER_MASTER_0_SDA;
